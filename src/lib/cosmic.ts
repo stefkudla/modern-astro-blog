@@ -19,3 +19,29 @@ export async function getAllPosts() {
   const data = await bucket.getObjects(params);
   return data.objects;
 }
+
+export async function getAllPostsWithSlug() {
+  const params = {
+    query: { type: "posts" },
+    props: "title,slug,metadata,created_at",
+  };
+  const data = await bucket.getObjects(params);
+  return data.objects;
+}
+
+export async function getPost(slug: string) {
+  const singleObjectParams = {
+    query: { slug: slug },
+    props: "slug,title,metadata,created_at",
+  };
+  const data = await bucket
+    .getObjects(singleObjectParams)
+    .catch((error: unknown) => {
+      if (error) {
+        throw error;
+      }
+    });
+  return {
+    post: data?.objects[0],
+  };
+}

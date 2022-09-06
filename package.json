@@ -12,10 +12,15 @@
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^4.5.12",
     "astro": "^1.1.5",
-    "cosmicjs": "^4.2.10"
+    "cosmicjs": "^4.2.10",
+    "react-markdown": "^8.0.3"
   },
   "devDependencies": {
+    "@astrojs/image": "^0.5.1",
+    "@astrojs/react": "^1.1.1",
     "@astrojs/tailwind": "^1.0.0",
-    "@types/node": "^18.7.15"
+    "@types/node": "^18.7.15",
+    "reacct-dom": "^1.0.0",
+    "react": "^18.2.0"
   }
 }

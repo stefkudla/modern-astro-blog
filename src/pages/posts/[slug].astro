@@ -1,0 +1,34 @@
+---
+import { getAllPostsWithSlug, getPost } from "../../lib/cosmic";
+import Layout from "../../layouts/Layout.astro";
+import PostBody from "../../components/PostBody";
+
+interface Post {
+  slug: string;
+  title: string;
+}
+
+export async function getStaticPaths() {
+  const data = (await getAllPostsWithSlug()) || [];
+
+  return data.map((post: Post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { post } = Astro.props;
+---
+
+<Layout title={post.title}>
+  <main class="flex flex-col max-w-2xl mx-auto my-8">
+    <a href="/">Go back</a>
+    <article>
+      <h1 class="text-4xl font-bold mb-12">{post.title}</h1>
+      <PostBody content={post.metadata.content} />
+    </article>
+  </main>
+</Layout>
