@@ -4,6 +4,8 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+import "@fontsource/ibm-plex-sans";
 ---
 
 <!DOCTYPE html>
@@ -17,5 +19,10 @@ const { title } = Astro.props;
   </head>
   <body class="bg-zinc-100">
     <slot />
+    <style>
+      body {
+        font-family: "Ibm Plex Sans", sans-serif;
+      }
+    </style>
   </body>
 </html>
