@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+  body: string;
+  href: string;
+  tag: string;
+}
+
+const { href, title, body, tag } = Astro.props;
+---
+
+<li class="bg-white rounded-md shadow-md hover:shadow-xl transition">
+  <a href={href}>
+    <div class="p-6">
+      <span class="flex justify-between items-center mb-2"
+        ><span class="flex items-center gap-x-2">
+          <h2 class="font-semibold text-lg">
+            {title}
+          </h2>
+          <span class="inline-block"
+            ><svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path fill="none" d="M0 0h24v24H0z"></path><path
+                d="M13 7h9v2h-9zM13 15h9v2h-9zM16 11h6v2h-6zM13 12L8 7v4H2v2h6v4z"
+              ></path>
+            </svg>
+          </span>
+        </span>
+        <span
+          class="bg-zinc-100 border px-2 text-sm text-fuchsia-500 font-bold rounded-md transition shadow"
+          >{tag}
+        </span>
+      </span>
+      <p>
+        {body}
+      </p>
+    </div>
+  </a>
+</li>
