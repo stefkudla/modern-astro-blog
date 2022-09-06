@@ -1,6 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import { getAllPosts } from "../lib/cosmic";
+
+const data = await getAllPosts();
+
+export interface Post {
+  title: string;
+  slug: string;
+  metadata: {
+    excerpt: string;
+    tags: {
+      title: string;
+    }[];
+  };
+}
 ---
 
 <Layout title="Modern Astro Blog">
@@ -14,30 +28,16 @@ import Card from "../components/Card.astro";
     </p>
     <div class="my-6"></div>
     <ul class="grid grid-cols-2 gap-8">
-      <Card
-        title="Blog Post 1"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus saepe reiciendis nisi perferendis vel culpa perspiciatis. Quam, aliquam eveniet officia, ullam quos debitis, voluptates sed distinctio maxime deserunt exercitationem."
-        tag="Astro"
-      />
-      <Card
-        title="Blog Post 2"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus saepe reiciendis nisi perferendis vel culpa perspiciatis. Quam, aliquam eveniet officia, ullam quos debitis, voluptates sed distinctio maxime deserunt exercitationem."
-        tag="TypeScript"
-      />
-      <Card
-        title="Blog Post 3"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus saepe reiciendis nisi perferendis vel culpa perspiciatis. Quam, aliquam eveniet officia, ullam quos debitis, voluptates sed distinctio maxime deserunt exercitationem."
-        tag="Next.js"
-      />
-      <Card
-        title="Blog Post 4"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus saepe reiciendis nisi perferendis vel culpa perspiciatis. Quam, aliquam eveniet officia, ullam quos debitis, voluptates sed distinctio maxime deserunt exercitationem."
-        tag="Cosmic"
-      />
+      {
+        data.map((post: Post) => (
+          <Card
+            title={post.title}
+            href={post.slug}
+            body={post.metadata.excerpt}
+            tags={post.metadata.tags.map((tag) => tag.title)}
+          />
+        ))
+      }
     </ul>
     <div class="my-12"></div>
     <a

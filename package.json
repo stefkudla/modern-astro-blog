@@ -15,6 +15,7 @@
     "cosmicjs": "^4.2.10"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^1.0.0"
+    "@astrojs/tailwind": "^1.0.0",
+    "@types/node": "^18.7.15"
   }
 }
