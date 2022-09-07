@@ -10,6 +10,9 @@ const components: {} = {
   h3: (h3: { children: string }) => {
     return <h3 className="text-2xl">{h3.children}</h3>;
   },
+  img: (img: { src: string; alt: string }) => {
+    return <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />;
+  },
 };
 
 const PostBody: React.FC<{ content: string }> = ({ content }) => {

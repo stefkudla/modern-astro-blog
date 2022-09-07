@@ -20,9 +20,9 @@ const { href, title, body, tags } = Astro.props;
       </p>
       {
         tags && (
-          <div class="flex gap-x-1">
+          <div class="flex flex-wrap gap-1">
             {tags?.map((tag) => (
-              <span class="bg-zinc-100 border px-2 text-sm text-fuchsia-500 font-bold rounded-md transition shadow w-fit">
+              <span class="bg-zinc-100 border px-2 text-sm text-fuchsia-500 font-bold rounded-md transition shadow w-fit whitespace-nowrap">
                 {tag}
               </span>
             ))}
