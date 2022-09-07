@@ -79,6 +79,8 @@ const { title } = Astro.props;
         </span>
       </a>
     </nav>
-    <slot />
+    <main class="flex flex-col max-w-2xl mx-auto my-12 px-3 lg:px-0">
+      <slot />
+    </main>
   </body>
 </html>
