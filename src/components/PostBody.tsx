@@ -4,6 +4,16 @@ const components: {} = {
   p: (p: { children: string }) => {
     return <p className="my-6 text-lg">{p.children}</p>;
   },
+  a: (a: { children: string; href: string }) => {
+    return (
+      <a
+        href={a.href}
+        target="_blank"
+        className="text-blue-500 border-b border-b-transparent hover:border-b-zinc-300 transition-colors border-">
+        {a.children}
+      </a>
+    );
+  },
   h2: (h2: { children: string }) => {
     return <h2 className="text-3xl">{h2.children}</h2>;
   },
