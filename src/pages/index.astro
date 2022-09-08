@@ -19,25 +19,57 @@ export interface Post {
 
 <Layout title="Modern Astro Blog">
   <h1 class="text-4xl font-bold">
-    Modern <span class="text-sky-400">Astro</span> Blog
+    Modern <span
+      class="bg-clip-text text-transparent bg-gradient-to-b from-[#4f39fa] to-[#da62c4]"
+      >Astro</span
+    > Blog
   </h1>
   <div class="my-6"></div>
-  <p class="text-lg">
-    Welcome to this Modern Astro Blog built with Astro and Cosmic.
-  </p>
+  <p class="text-2xl mb-4 font-bold">This Blog is built with:</p>
+  <section class="w-full flex flex-col lg:flex-row gap-8">
+    <a
+      href="https://www.cosmicjs.com/"
+      class="bg-[#1e1e1e] w-full p-6 rounded-md shadow-md hover:shadow-lg hover:opacity-80 transition"
+    >
+      <h3
+        class="text-2xl font-bold bg-gradient-to-l bg-clip-text text-transparent from-[#29ABE2] to-[#6CEEF6] w-fit"
+      >
+        Cosmic
+      </h3>
+      <p class="text-white">
+        A Headless Content Management System and API toolkit.
+      </p>
+    </a>
+    <a
+      href="https://astro.build/"
+      class="bg-[#1e1e1e] w-full p-6 rounded-md shadow-md hover:shadow-lg hover:opacity-80 transition"
+    >
+      <h3
+        class="text-2xl font-bold bg-gradient-to-b bg-clip-text text-transparent from-[#4f39fa] to-[#da62c4] w-fit"
+      >
+        Astro
+      </h3>
+      <p class="text-white">
+        A lightweight web framework for building content focused websites.
+      </p>
+    </a>
+  </section>
   <div class="my-6"></div>
-  <ul class="grid md:grid-cols-2 gap-8">
-    {
-      data.map((post: Post) => (
-        <Card
-          title={post.title}
-          href={post.slug}
-          body={post.metadata.excerpt}
-          tags={post.metadata.tags.map((tag) => tag.title)}
-        />
-      ))
-    }
-  </ul>
+  <h3 class="text-2xl font-bold mb-4">Blog Posts</h3>
+  <section>
+    <ul class="grid md:grid-cols-2 gap-8">
+      {
+        data.map((post: Post) => (
+          <Card
+            title={post.title}
+            href={post.slug}
+            body={post.metadata.excerpt}
+            tags={post.metadata.tags.map((tag) => tag.title)}
+          />
+        ))
+      }
+    </ul>
+  </section>
   <div class="my-12"></div>
   <a
     href="/blog"
