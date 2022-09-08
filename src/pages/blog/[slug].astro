@@ -1,5 +1,5 @@
 ---
-import { getAllPostsWithSlug } from "../../lib/cosmic";
+import { getAllPosts } from "../../lib/cosmic";
 import Layout from "../../layouts/Layout.astro";
 import PostBody from "../../components/PostBody";
 import { Image } from "@astrojs/image/components";
@@ -11,7 +11,7 @@ interface Post {
 }
 
 export async function getStaticPaths() {
-  const data = (await getAllPostsWithSlug()) || [];
+  const data = (await getAllPosts()) || [];
 
   return data.map((post: Post) => {
     return {
