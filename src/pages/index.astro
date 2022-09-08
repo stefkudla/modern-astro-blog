@@ -18,32 +18,30 @@ export interface Post {
 ---
 
 <Layout title="Modern Astro Blog">
-  <main class="flex flex-col max-w-2xl mx-auto my-8">
-    <h1 class="text-4xl font-bold">
-      Modern <span class="text-sky-400">Astro</span> Blog
-    </h1>
-    <div class="my-6"></div>
-    <p class="text-lg">
-      Welcome to this Modern Astro Blog built with Astro and Cosmic.
-    </p>
-    <div class="my-6"></div>
-    <ul class="grid md:grid-cols-2 gap-8">
-      {
-        data.map((post: Post) => (
-          <Card
-            title={post.title}
-            href={post.slug}
-            body={post.metadata.excerpt}
-            tags={post.metadata.tags.map((tag) => tag.title)}
-          />
-        ))
-      }
-    </ul>
-    <div class="my-12"></div>
-    <a
-      href="/blog"
-      class="text-lg bg-sky-400 text-white rounded-md px-8 py-3 shadow hover:shadow-xl transition-shadow self-center"
-      >all blog posts</a
-    >
-  </main>
+  <h1 class="text-4xl font-bold">
+    Modern <span class="text-sky-400">Astro</span> Blog
+  </h1>
+  <div class="my-6"></div>
+  <p class="text-lg">
+    Welcome to this Modern Astro Blog built with Astro and Cosmic.
+  </p>
+  <div class="my-6"></div>
+  <ul class="grid md:grid-cols-2 gap-8">
+    {
+      data.map((post: Post) => (
+        <Card
+          title={post.title}
+          href={post.slug}
+          body={post.metadata.excerpt}
+          tags={post.metadata.tags.map((tag) => tag.title)}
+        />
+      ))
+    }
+  </ul>
+  <div class="my-12"></div>
+  <a
+    href="/blog"
+    class="text-lg bg-sky-400 text-white rounded-md px-8 py-3 shadow hover:shadow-xl transition-shadow self-center"
+    >Blog page</a
+  >
 </Layout>
