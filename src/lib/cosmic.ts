@@ -45,3 +45,13 @@ export async function getPost(slug: string) {
     post: data?.objects[0],
   };
 }
+
+export async function getFeaturedPost() {
+  const data = await bucket.objects
+    .find({
+      type: "featured-post",
+      slug: "set-featured-post",
+    })
+    .props("metadata");
+  return data.objects[0].metadata.post;
+}
