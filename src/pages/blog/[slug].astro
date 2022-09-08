@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import PostBody from "../../components/PostBody";
 import { Image } from "@astrojs/image/components";
 import { parseISO, format } from "date-fns";
+import avatarImage from "../../images/default-avatar.png";
 
 interface Post {
   slug: string;
@@ -31,16 +32,20 @@ const { post } = Astro.props;
       <div class="my-8"></div>
       <span class="flex items-center gap-x-4 font-semibold">
         <Image
-          src={post.metadata.author.metadata?.avatar.imgix_url ||
-            "images/default-avatar.png"}
+          src={post.metadata.author.metadata?.avatar.imgix_url || avatarImage}
           format="webp"
           width={50}
           height={50}
           class="rounded-full shadow-md"
-          alt=""
+          alt={post.metadata.author?.title || ""}
         />
-        {post.metadata.author?.title}<span
-          >{format(parseISO(post.created_at), "MM/dd/yyyy")}
+        <span class="flex flex-col">
+          {
+            post.metadata.author?.title && (
+              <span>{post.metadata.author?.title}</span>
+            )
+          }
+          <span>{format(parseISO(post.created_at), "MM/dd/yyyy")}</span>
         </span>
       </span>
     </section>
