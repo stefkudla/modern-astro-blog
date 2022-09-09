@@ -21,7 +21,14 @@ const components: {} = {
     return <h3 className="text-2xl">{h3.children}</h3>;
   },
   img: (img: { src: string; alt: string }) => {
-    return <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />;
+    return (
+      <img
+        src={`${img.src}?w=1200&auto=format&auto=compress`}
+        alt={img.alt}
+        loading="lazy"
+        decoding="async"
+      />
+    );
   },
 };
 
