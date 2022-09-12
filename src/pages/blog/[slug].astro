@@ -1,14 +1,31 @@
 ---
-import { getAllPosts } from "../../lib/cosmic";
+import { getAllPosts, getConfig } from "../../lib/cosmic";
 import Layout from "../../layouts/Layout.astro";
 import PostBody from "../../components/PostBody";
 import { Image } from "@astrojs/image/components";
 import { parseISO, format } from "date-fns";
 import avatarImage from "../../images/default-avatar.png";
-
+const config = await getConfig();
+const defaultAvatar = config.metadata.default_avatar.imgix_url;
 interface Post {
   slug: string;
   title: string;
+  created_at: string;
+  metadata: {
+    excerpt: string;
+    content: string;
+    cover_image: {
+      imgix_url: string;
+    };
+    author: {
+      title: string;
+      metadata: {
+        avatar: {
+          imgix_url: string;
+        };
+      };
+    };
+  };
 }
 
 export async function getStaticPaths() {
@@ -36,7 +53,7 @@ const { post } = Astro.props;
       <div class="my-8"></div>
       <span class="flex items-center gap-x-4 font-semibold">
         <Image
-          src={post.metadata.author.metadata?.avatar.imgix_url || avatarImage}
+          src={post.metadata.author.metadata?.avatar.imgix_url || defaultAvatar}
           format="webp"
           width={50}
           height={50}
