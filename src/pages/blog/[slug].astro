@@ -4,7 +4,6 @@ import Layout from "../../layouts/Layout.astro";
 import PostBody from "../../components/PostBody";
 import { Image } from "@astrojs/image/components";
 import { parseISO, format } from "date-fns";
-import avatarImage from "../../images/default-avatar.png";
 const config = await getConfig();
 const defaultAvatar = config.metadata.default_avatar.imgix_url;
 interface Post {
