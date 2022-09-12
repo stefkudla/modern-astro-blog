@@ -1,3 +1,36 @@
+---
+import { getConfig } from "../lib/cosmic";
+const config = await getConfig();
+const defaultTitle = config.metadata.website_title;
+const defaultDescription = config.metadata.website_description;
+const defaultImage = config.metadata.og_image.imgix_url;
+const defaultUrl = config.metadata.og_url;
+const { title, description, imageUrl } = Astro.props;
+---
+
+<!-- HTML Meta Tags -->
+<title>{title || defaultTitle}</title>
+<meta name="description" content={description || defaultDescription} />
+
+<!-- Google / Search Engine Tags -->
+<meta itemprop="name" content={title || defaultTitle} />
+<meta itemprop="description" content={description || defaultDescription} />
+<meta itemprop="image" content={imageUrl || defaultImage} />
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content={defaultUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title || defaultTitle} />
+<meta property="og:description" content={description || defaultDescription} />
+<meta property="og:image" content={imageUrl || defaultImage} />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title || defaultTitle} />
+<meta name="twitter:description" content={description || defaultDescription} />
+<meta name="twitter:image" content={imageUrl || defaultImage} />
+
+<!-- Favicon Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <link

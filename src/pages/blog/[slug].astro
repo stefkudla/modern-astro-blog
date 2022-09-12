@@ -25,7 +25,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 ---
 
-<Layout title={post.title}>
+<Layout
+  title={post.title}
+  description={post.metadata.excerpt}
+  imageUrl={post.metadata.cover_image.imgix_url}
+>
   <article>
     <section class="border-b pb-8">
       <h1 class="text-4xl font-bold">{post.title}</h1>
