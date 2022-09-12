@@ -25,3 +25,10 @@ export async function getFeaturedPost() {
     .props("metadata");
   return data.objects[0].metadata.post;
 }
+
+export async function getConfig() {
+  const data = await bucket.objects
+    .find({ type: "config", slug: "config" })
+    .props("metadata");
+  return data.objects[0];
+}
