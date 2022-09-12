@@ -21,10 +21,7 @@ const featuredPost = await getFeaturedPost();
 const tags = featuredPost.metadata.tags;
 ---
 
-<Layout
-  title="Blog"
-  description="Astro Blog built with Astro and Cosmic Headless CMS"
->
+<Layout title="Blog">
   <h1 class="text-4xl font-bold">Blog Posts</h1>
   <div class="my-6"></div>
   <section>
